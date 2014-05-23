@@ -1,0 +1,24 @@
+Como\FormBuilderBundle\Entity\Attribute:
+    type: entity
+    table: form_builder_attribute
+    repositoryClass: Como\FormBuilderBundle\Entity\AttributeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        value:
+            type: string
+            length: 255
+    manyToOne:
+        widget:
+          targetEntity: Widget
+          inversedBy: attributes
+
+
+    lifecycleCallbacks: {  }

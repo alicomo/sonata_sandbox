@@ -1,0 +1,35 @@
+Como\FormBuilderBundle\Entity\Widget:
+    type: entity
+    table: form_builder_widget
+    repositoryClass: Como\FormBuilderBundle\Entity\WidgetRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        code:
+            type: text
+        class:
+            type: string
+            length: 255
+        style:
+            type: text
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    oneToMany:
+        attributes:
+          targetEntity: Attribute
+          mappedBy: widget
+        widget_options:
+          targetEntity: WidgetOption
+          mappedBy: widget
+    lifecycleCallbacks:
+        prePersist: prePersist
+        preUpdate: preUpdate

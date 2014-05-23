@@ -1,0 +1,25 @@
+parameters:
+#    como_form_builder.example.class: Como\FormBuilderBundle\Example
+
+services:
+#    como_form_builder.example:
+#        class: %como_form_builder.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    como_form_builder.admin.widget:
+        class: Como\FormBuilderBundle\Admin\WidgetAdmin
+        arguments: [~, Como\FormBuilderBundle\Entity\Widget, ComoFormBuilderBundle:WidgetAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Form Builder, label: Widget}
+
+    como_form_builder.admin.attribute:
+        class: Como\FormBuilderBundle\Admin\AttributeAdmin
+        arguments: [~, Como\FormBuilderBundle\Entity\Attribute, ComoFormBuilderBundle:AttributeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Form Builder, label: Attribute}
+
+    como_form_builder.admin.option:
+        class: Como\FormBuilderBundle\Admin\OptionAdmin
+        arguments: [~, Como\FormBuilderBundle\Entity\WidgetOption, ComoFormBuilderBundle:OptionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Form Builder, label: Option}
+

@@ -1,0 +1,22 @@
+Como\FormBuilderBundle\Entity\WidgetOption:
+    type: entity
+    table: form_builder_option
+    repositoryClass: Como\FormBuilderBundle\Entity\WidgetOptionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        value:
+            type: string
+            length: 255
+    manyToOne:
+        widget:
+          targetEntity: Widget
+          inversedBy: widget_options
+    lifecycleCallbacks: {  }
