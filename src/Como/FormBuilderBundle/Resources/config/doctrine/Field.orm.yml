@@ -1,0 +1,28 @@
+Como\FormBuilderBundle\Entity\Field:
+    type: entity
+    table: form_builder_field
+    repositoryClass: Como\FormBuilderBundle\Entity\FieldRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fieldLabel:
+            type: string
+            length: 255
+            column: field_label
+        fieldLength:
+            type: decimal
+            column: field_length
+        fieldNullable:
+            type: boolean
+            column: field_nullable
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+    lifecycleCallbacks: {  }

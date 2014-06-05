@@ -1,0 +1,36 @@
+Como\FormBuilderBundle\Entity\Form:
+    type: entity
+    table: form_builder_form
+    repositoryClass: Como\FormBuilderBundle\Entity\FormRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: text
+        email:
+            type: string
+            length: 255
+        titleSubmit:
+            type: string
+            length: 255
+            column: title_submit
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+    oneToMany:
+        fields:
+          targetEntity: Field
+          mappedBy: form
+    lifecycleCallbacks:
+        prePersist: prePersist
+        preUpdate: preUpdate
