@@ -1,0 +1,16 @@
+Como\FormBuilderBundle\Entity\Form:
+    properties:
+        title:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+            - Email: ~
+        titleSubmit:
+            - NotBlank: ~
+
+Como\FormBuilderBundle\Entity\Field:
+    properties:
+        fieldLabel:
+            - NotBlank: ~
+        fieldLength:
+            - NotBlank: ~

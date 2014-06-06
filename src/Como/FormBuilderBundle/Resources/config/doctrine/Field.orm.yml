@@ -25,4 +25,13 @@ Como\FormBuilderBundle\Entity\Field:
         updatedAt:
             type: datetime
             column: updated_at
-    lifecycleCallbacks: {  }
+    manyToOne:
+        filedType:
+          targetEntity: Widget
+          inversedBy: fields
+        form:
+          targetEntity: Form
+          inversedBy: fields
+    lifecycleCallbacks:
+        prePersist: [prePersist]
+        preUpdate: [preUpdate]

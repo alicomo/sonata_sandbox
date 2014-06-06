@@ -23,3 +23,14 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: Form Builder, label: Option}
 
+    como_form_builder.admin.form:
+        class: Como\FormBuilderBundle\Admin\FormAdmin
+        arguments: [~, Como\FormBuilderBundle\Entity\Form, ComoFormBuilderBundle:FormAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Form Builder, label: Form}
+
+    como_form_builder.admin.field:
+        class: Como\FormBuilderBundle\Admin\FieldAdmin
+        arguments: [~, Como\FormBuilderBundle\Entity\Field, ComoFormBuilderBundle:FieldAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Field}

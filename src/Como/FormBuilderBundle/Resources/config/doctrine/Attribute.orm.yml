@@ -19,6 +19,4 @@ Como\FormBuilderBundle\Entity\Attribute:
         widget:
           targetEntity: Widget
           inversedBy: attributes
-
-
     lifecycleCallbacks: {  }

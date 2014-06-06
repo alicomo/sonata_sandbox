@@ -86,7 +86,8 @@ sonata_admin:
                 items:
                     - sonata.demo.admin.car
                     - sonata.demo.admin.engine
-            como.admin.widget.form_builder:
+            como.admin.form_builder:
                 label: Form Builder
                 items:
                     - como_form_builder.admin.widget
+                    - como_form_builder.admin.form
