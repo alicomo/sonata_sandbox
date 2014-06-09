@@ -4,12 +4,11 @@ namespace Como\FormBuilderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Como\FormBuilderBundle\Model\Option as BaseOption;
 
 /**
  * WidgetOption
  */
-class WidgetOption extends BaseOption
+class WidgetOption
 {
     /**
      * @var integer
@@ -26,5 +25,4 @@ class WidgetOption extends BaseOption
     {
         return $this->id;
     }
-
 }

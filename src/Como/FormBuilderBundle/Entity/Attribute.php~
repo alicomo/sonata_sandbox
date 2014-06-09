@@ -3,12 +3,11 @@
 namespace Como\FormBuilderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Como\FormBuilderBundle\Model\Attribute as BaseAttribute;
 
 /**
  * Attribute
  */
-class Attribute extends BaseAttribute
+class Attribute
 {
     /**
      * @var integer
@@ -24,5 +23,6 @@ class Attribute extends BaseAttribute
     {
         return $this->id;
     }
+
 
 }

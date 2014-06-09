@@ -167,10 +167,11 @@ abstract class Widget implements WidgetInterface
     /**
      * Add attribute
      *
-     * @param AttributeInterface $attribute
+     * @param WidgetAttributeInterface $attribute
      */
     public function addAttribute(AttributeInterface $attribute)
     {
+        $attribute->setWidget($this);
         $this->attributes[] = $attribute;
     }
 
@@ -187,10 +188,11 @@ abstract class Widget implements WidgetInterface
     /**
      * Add widget_option
      *
-     * @param OptionInterface $option
+     * @param WidgetOptionInterface $option
      */
     public function addWidgetOption(OptionInterface $option)
     {
+        $option->setWidget($this);
         $this->widget_options[] = $option;
     }
 
@@ -202,18 +204,6 @@ abstract class Widget implements WidgetInterface
     public function getWidgetOptions()
     {
         return $this->widget_options;
-    }
-
-
-    public function prePersist()
-    {
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
-    }
-
-    public function preUpdate()
-    {
-        $this->updatedAt = new \DateTime;
     }
 
 

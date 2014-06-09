@@ -32,7 +32,7 @@ Como\FormBuilderBundle\Entity\Form:
         fields:
           targetEntity: Field
           mappedBy: form
-          cascade: ["persist"]
+          cascade: [persist]
     lifecycleCallbacks:
         prePersist: [prePersist]
         preUpdate: [preUpdate]

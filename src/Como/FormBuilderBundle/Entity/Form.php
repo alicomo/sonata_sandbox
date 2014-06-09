@@ -231,6 +231,7 @@ class Form
      */
     public function addField(\Como\FormBuilderBundle\Entity\Field $fields)
     {
+        $fields->setForm($this);
         $this->fields[] = $fields;
 
         return $this;

@@ -27,9 +27,11 @@ Como\FormBuilderBundle\Entity\Widget:
         attributes:
           targetEntity: Attribute
           mappedBy: widget
+          cascade: [persist]
         widget_options:
           targetEntity: WidgetOption
           mappedBy: widget
+          cascade: [persist]
     lifecycleCallbacks:
-        prePersist: prePersist
-        preUpdate: preUpdate
+        prePersist: [prePersist]
+        preUpdate: [preUpdate]

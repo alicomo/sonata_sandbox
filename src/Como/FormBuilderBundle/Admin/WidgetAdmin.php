@@ -57,12 +57,12 @@ class WidgetAdmin extends Admin
             ->add('code')
             ->add('class')
             ->add('style')
-            ->add('attributes', 'sonata_type_collection', array('required' => false), array(
+            ->add('attributes', 'sonata_type_collection', array('required' => false, 'by_reference' => false), array(
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'position',
             ))
-            ->add('widget_options', 'sonata_type_collection', array('label' => 'Options', 'required' => false), array(
+            ->add('widget_options', 'sonata_type_collection', array('label' => 'Options', 'required' => false, 'by_reference' => false), array(
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'position',

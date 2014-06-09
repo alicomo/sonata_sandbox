@@ -10,6 +10,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class FormAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -53,7 +56,7 @@ class FormAdmin extends Admin
             ->add('description')
             ->add('email')
             ->add('titleSubmit')
-            ->add('fields', 'sonata_type_collection', array('required' => false), array(
+            ->add('fields', 'sonata_type_collection', array('required' => false, 'by_reference' => false), array(
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'position',
