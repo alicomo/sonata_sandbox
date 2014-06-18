@@ -3,12 +3,14 @@
 namespace Como\FormBuilderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Application\Sonata\PageBundle\Entity\Page;
 
 /**
  * Form
  */
 class Form
 {
+   
     /**
      * @var integer
      */
@@ -25,6 +27,16 @@ class Form
     private $description;
 
     /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $fields;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -34,16 +46,8 @@ class Form
      */
     private $updatedAt;
 
-    /**
-     * @var string
-     */
-    private $email;
 
-    /**
-     * @var string
-     */
-    private $titleSubmit;
-
+    public $formBuilder;
 
     /**
      * Get id
@@ -102,6 +106,52 @@ class Form
     }
 
     /**
+     * Set email
+     *
+     * @param string $email
+     * @return Form
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set fields
+     *
+     * @param string $fields
+     * @return Form
+     */
+    public function setFields($fields)
+    {
+        $this->fields = $fields;
+
+        return $this;
+    }
+
+    /**
+     * Get fields
+     *
+     * @return string 
+     */
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -148,55 +198,8 @@ class Form
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return Form
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set titleSubmit
-     *
-     * @param string $titleSubmit
-     * @return Form
-     */
-    public function setTitleSubmit($titleSubmit)
-    {
-        $this->titleSubmit = $titleSubmit;
-
-        return $this;
-    }
-
-    /**
-     * Get titleSubmit
-     *
-     * @return string 
-     */
-    public function getTitleSubmit()
-    {
-        return $this->titleSubmit;
-    }
-
-    /**
      * @ORM\PrePersist
      */
-
     public function prePersist()
     {
         $this->createdAt = new \DateTime;
@@ -210,50 +213,118 @@ class Form
     {
         $this->updatedAt = new \DateTime;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $fields;
+
 
     /**
-     * Constructor
+     * @var string
      */
-    public function __construct()
-    {
-        $this->fields = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $thankYouType;
 
     /**
-     * Add fields
+     * @var string
+     */
+    private $thankYouExternalPage;
+
+    /**
+     * @var string
+     */
+    private $thankYouMessage;
+
+    /**
+     * @var \Sonata\PageBundle\Entity\Page
+     */
+    private $thankYouInternalPage;
+
+
+    /**
+     * Set thankYouType
      *
-     * @param \Como\FormBuilderBundle\Entity\Field $fields
+     * @param string $thankYouType
      * @return Form
      */
-    public function addField(\Como\FormBuilderBundle\Entity\Field $fields)
+    public function setThankYouType($thankYouType)
     {
-        $fields->setForm($this);
-        $this->fields[] = $fields;
+        $this->thankYouType = $thankYouType;
 
         return $this;
     }
 
     /**
-     * Remove fields
+     * Get thankYouType
      *
-     * @param \Como\FormBuilderBundle\Entity\Field $fields
+     * @return string 
      */
-    public function removeField(\Como\FormBuilderBundle\Entity\Field $fields)
+    public function getThankYouType()
     {
-        $this->fields->removeElement($fields);
+        return $this->thankYouType;
     }
 
     /**
-     * Get fields
+     * Set thankYouExternalPage
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param string $thankYouExternalPage
+     * @return Form
      */
-    public function getFields()
+    public function setThankYouExternalPage($thankYouExternalPage)
     {
-        return $this->fields;
+        $this->thankYouExternalPage = $thankYouExternalPage;
+
+        return $this;
+    }
+
+    /**
+     * Get thankYouExternalPage
+     *
+     * @return string 
+     */
+    public function getThankYouExternalPage()
+    {
+        return $this->thankYouExternalPage;
+    }
+
+    /**
+     * Set thankYouMessage
+     *
+     * @param string $thankYouMessage
+     * @return Form
+     */
+    public function setThankYouMessage($thankYouMessage)
+    {
+        $this->thankYouMessage = $thankYouMessage;
+
+        return $this;
+    }
+
+    /**
+     * Get thankYouMessage
+     *
+     * @return string 
+     */
+    public function getThankYouMessage()
+    {
+        return $this->thankYouMessage;
+    }
+
+    /**
+     * Set thankYouInternalPage
+     *
+     * @param Page $thankYouInternalPage
+     * @return Form
+     */
+    public function setThankYouInternalPage(Page $thankYouInternalPage = null)
+    {
+        $this->thankYouInternalPage = $thankYouInternalPage;
+
+        return $this;
+    }
+
+    /**
+     * Get thankYouInternalPage
+     *
+     * @return Page
+     */
+    public function getThankYouInternalPage()
+    {
+        return $this->thankYouInternalPage;
     }
 }

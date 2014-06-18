@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Knp\Menu\ItemInterface as MenuItemInterface;
+use Sonata\AdminBundle\Admin\AdminInterface;
 
 class FormAdmin extends Admin
 {
@@ -52,15 +54,15 @@ class FormAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('description')
-            ->add('email')
-            ->add('titleSubmit')
-            ->add('fields', 'sonata_type_collection', array('required' => false, 'by_reference' => false), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable' => 'position',
-            ))
+            ->with('Form Details')
+                ->add('title')
+                ->add('description')
+                ->add('email')
+            ->end()
+            ->with('Form Builder')
+                ->add('fields', 'hidden')
+                ->add('formBuilder', 'como_form_builder', array('label' => false))
+            ->end()
         ;
     }
 
@@ -73,9 +75,47 @@ class FormAdmin extends Admin
             ->add('title')
             ->add('description')
             ->add('email')
-            ->add('titleSubmit')
+            ->add('fields')
             ->add('createdAt')
             ->add('updatedAt')
         ;
     }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
+    {
+        if (!$childAdmin && !in_array($action, array('edit'))) {
+            return;
+        }
+
+        $admin = $this->isChild() ? $this->getParent() : $this;
+
+        $id = $admin->getRequest()->get('id');
+
+        $menu->addChild(
+            'Form',
+            array('uri' => $admin->generateUrl('edit', array('id' => $id)))
+        );
+
+        $menu->addChild(
+            'Data',
+            array('uri' => $admin->generateUrl('edit', array('id' => $id)))
+        );
+
+
+    }
+
+    public function getTemplate($name)
+    {
+        if($name == 'edit')
+        {
+            return 'ComoFormBuilderBundle:Admin:Form/edit.html.twig';
+        }
+        return parent::getTemplate($name);
+    }
+
+
 }

@@ -81,6 +81,7 @@ twig:
         resources:
             - 'SonataFormatterBundle:Form:formatter.html.twig'
             - 'SonataMediaBundle:Form:media_widgets.html.twig'
+            - 'ComoFormBuilderBundle:Form:fields.html.twig'
 
     exception_controller: 'FOS\RestBundle\Controller\ExceptionController::showAction'
 

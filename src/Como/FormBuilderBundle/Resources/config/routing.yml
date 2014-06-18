@@ -1,3 +1,7 @@
 como_form_builder_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: ComoFormBuilderBundle:Default:index }
+
+como_form_builder_api_list:
+    pattern:  /admin/api/widget/list
+    defaults: { _controller: ComoFormBuilderBundle:WidgetRest:list }

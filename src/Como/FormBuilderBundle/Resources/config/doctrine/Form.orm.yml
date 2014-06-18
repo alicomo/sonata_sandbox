@@ -18,21 +18,33 @@ Como\FormBuilderBundle\Entity\Form:
         email:
             type: string
             length: 255
-        titleSubmit:
+            nullable: true
+        thankYouType:
             type: string
             length: 255
-            column: title_submit
+            column: thank_you_type
+        thankYouExternalPage:
+            type: string
+            length: 255
+            nullable: true
+            column: thank_you_external_page
+        thankYouMessage:
+            type: text
+            nullable: true
+            column: thank_you_message
+        fields:
+            type: text
+            nullable: true
         createdAt:
             type: datetime
             column: created_at
         updatedAt:
             type: datetime
             column: updated_at
-    oneToMany:
-        fields:
-          targetEntity: Field
-          mappedBy: form
-          cascade: [persist]
+    oneToOne:
+        thankYouInternalPage:
+            targetEntity: Application\Sonata\PageBundle\Entity\Page
+            nullable: true
     lifecycleCallbacks:
         prePersist: [prePersist]
         preUpdate: [preUpdate]

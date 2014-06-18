@@ -1,0 +1,41 @@
+{% block como_form_builder_widget %}
+    <link href="{{ asset('bundles/comoformbuilder/assets/css/custom.css') }}" rel="stylesheet">
+    {% spaceless %}
+        <div class="container-fluid">
+            <div class="row-fluid clearfix">
+                <!-- Building Form. -->
+                <div class="span6">
+                    <div class="clearfix">
+                        <h2>Form</h2>
+                        <hr>
+                        <div id="build">
+                            <div id="target" class="form-horizontal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Building Form. -->
+
+                <!-- Components -->
+                <div class="span6">
+                    <h2>Widgets</h2>
+                    <hr>
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs" id="formtabs">
+                            <!-- Tab nav -->
+                        </ul>
+                        <div class="form-horizontal" id="components">
+                            <fieldset>
+                                <div class="tab-content">
+                                    <!-- Tabs of snippets go here -->
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Components -->
+            </div>
+        </div>
+    {% endspaceless %}
+    <script data-main="{{ asset('bundles/comoformbuilder/assets/js/main.js') }}" src="{{ asset('bundles/comoformbuilder/assets/js/lib/require.js') }}" ></script>
+{% endblock %}

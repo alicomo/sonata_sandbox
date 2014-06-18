@@ -25,55 +25,8 @@ class Widget
         return $this->id;
     }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->attributes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->widget_options = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
-    /**
-     * Remove attributes
-     *
-     * @param AttributeInterface $attribute
-     */
-    public function removeAttribute(AttributeInterface $attribute)
-    {
-        $this->attributes->removeElement($attribute);
-    }
-
-
-
-    /**
-     * Remove widget_option
-     *
-     * @param OptionInterface $option
-     */
-    public function removeWidgetOption(OptionInterface $option)
-    {
-        $this->widget_options->removeElement($option);
-    }
-
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist()
-    {
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        $this->updatedAt = new \DateTime;
-    }
 
     /**
      * @var string
@@ -88,12 +41,7 @@ class Widget
     /**
      * @var string
      */
-    private $class;
-
-    /**
-     * @var string
-     */
-    private $style;
+    private $template;
 
     /**
      * @var \DateTime
@@ -104,16 +52,6 @@ class Widget
      * @var \DateTime
      */
     private $updatedAt;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $attributes;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $widget_options;
 
 
     /**
@@ -163,49 +101,26 @@ class Widget
     }
 
     /**
-     * Set class
+     * Set template
      *
-     * @param string $class
+     * @param string $template
      * @return Widget
      */
-    public function setClass($class)
+    public function setTemplate($template)
     {
-        $this->class = $class;
+        $this->template = $template;
 
         return $this;
     }
 
     /**
-     * Get class
+     * Get template
      *
      * @return string 
      */
-    public function getClass()
+    public function getTemplate()
     {
-        return $this->class;
-    }
-
-    /**
-     * Set style
-     *
-     * @param string $style
-     * @return Widget
-     */
-    public function setStyle($style)
-    {
-        $this->style = $style;
-
-        return $this;
-    }
-
-    /**
-     * Get style
-     *
-     * @return string 
-     */
-    public function getStyle()
-    {
-        return $this->style;
+        return $this->template;
     }
 
     /**
@@ -253,53 +168,20 @@ class Widget
     {
         return $this->updatedAt;
     }
-
     /**
-     * Add attributes
-     *
-     * @param \Como\FormBuilderBundle\Entity\Attribute $attributes
-     * @return Widget
+     * @ORM\PrePersist
      */
-    public function addAttribute(\Como\FormBuilderBundle\Entity\Attribute $attributes)
+    public function prePersist()
     {
-
-        $attributes->setWidget($this);
-        $this->attributes[] = $attributes;
-
-        return $this;
+        $this->createdAt = new \DateTime;
+        $this->updatedAt = new \DateTime;
     }
 
     /**
-     * Get attributes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @ORM\PreUpdate
      */
-    public function getAttributes()
+    public function preUpdate()
     {
-        return $this->attributes;
-    }
-
-    /**
-     * Add widget_options
-     *
-     * @param \Como\FormBuilderBundle\Entity\WidgetOption $widgetOptions
-     * @return Widget
-     */
-    public function addWidgetOption(\Como\FormBuilderBundle\Entity\WidgetOption $widgetOptions)
-    {
-        $widgetOptions->setWidget($this);
-        $this->widget_options[] = $widgetOptions;
-
-        return $this;
-    }
-
-    /**
-     * Get widget_options
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWidgetOptions()
-    {
-        return $this->widget_options;
+        $this->updatedAt = new \DateTime;
     }
 }

@@ -18,8 +18,6 @@ class WidgetAdmin extends Admin
         $datagridMapper
             ->add('name')
             ->add('code')
-            ->add('class')
-            ->add('style')
             ->add('createdAt')
             ->add('updatedAt')
         ;
@@ -33,8 +31,7 @@ class WidgetAdmin extends Admin
         $listMapper
             ->add('name')
             ->add('code')
-            ->add('class')
-            ->add('style')
+            ->add('template')
             ->add('createdAt')
             ->add('updatedAt')
             ->add('_action', 'actions', array(
@@ -55,18 +52,8 @@ class WidgetAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('code')
-            ->add('class')
-            ->add('style')
-            ->add('attributes', 'sonata_type_collection', array('required' => false, 'by_reference' => false), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable' => 'position',
-            ))
-            ->add('widget_options', 'sonata_type_collection', array('label' => 'Options', 'required' => false, 'by_reference' => false), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable' => 'position',
-            ))
+            ->add('template')
+
         ;
     }
 
@@ -78,8 +65,7 @@ class WidgetAdmin extends Admin
         $showMapper
             ->add('name')
             ->add('code')
-            ->add('class')
-            ->add('style')
+            ->add('template')
             ->add('createdAt')
             ->add('updatedAt')
         ;

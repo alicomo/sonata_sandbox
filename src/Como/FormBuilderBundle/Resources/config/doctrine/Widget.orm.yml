@@ -14,24 +14,13 @@ Como\FormBuilderBundle\Entity\Widget:
             length: 255
         code:
             type: text
-        class:
-            type: string
-            length: 255
-        style:
+        template:
             type: text
+            nullable: true
         createdAt:
             type: datetime
         updatedAt:
             type: datetime
-    oneToMany:
-        attributes:
-          targetEntity: Attribute
-          mappedBy: widget
-          cascade: [persist]
-        widget_options:
-          targetEntity: WidgetOption
-          mappedBy: widget
-          cascade: [persist]
     lifecycleCallbacks:
         prePersist: [prePersist]
         preUpdate: [preUpdate]

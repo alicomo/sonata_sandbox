@@ -34,3 +34,8 @@ services:
         arguments: [~, Como\FormBuilderBundle\Entity\Field, ComoFormBuilderBundle:FieldAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Field}
+
+    como_form_builder_type:
+            class: Como\FormBuilderBundle\Form\Type\FormBuilderType
+            tags:
+                - { name: form.type, alias: como_form_builder }

@@ -29,9 +29,6 @@ Como\FormBuilderBundle\Entity\Field:
         filedType:
           targetEntity: Widget
           inversedBy: fields
-        form:
-          targetEntity: Form
-          inversedBy: fields
     lifecycleCallbacks:
         prePersist: [prePersist]
         preUpdate: [preUpdate]

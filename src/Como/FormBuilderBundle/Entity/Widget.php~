@@ -25,39 +25,177 @@ class Widget
         return $this->id;
     }
 
+
+
+
     /**
-     * Constructor
+     * @var string
      */
-    public function __construct()
-    {
-        $this->attributes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->widget_options = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $code;
+
+    /**
+     * @var string
+     */
+    private $size;
+
+    /**
+     * @var string
+     */
+    private $template;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
 
 
     /**
-     * Remove attributes
+     * Set name
      *
-     * @param AttributeInterface $attribute
+     * @param string $name
+     * @return Widget
      */
-    public function removeAttribute(AttributeInterface $attribute)
+    public function setName($name)
     {
-        $this->attributes->removeElement($attribute);
+        $this->name = $name;
+
+        return $this;
     }
-
-
 
     /**
-     * Remove widget_option
+     * Get name
      *
-     * @param OptionInterface $option
+     * @return string 
      */
-    public function removeWidgetOption(OptionInterface $option)
+    public function getName()
     {
-        $this->widget_options->removeElement($option);
+        return $this->name;
     }
 
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return Widget
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
 
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set size
+     *
+     * @param string $size
+     * @return Widget
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return string 
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * Set template
+     *
+     * @param string $template
+     * @return Widget
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+
+        return $this;
+    }
+
+    /**
+     * Get template
+     *
+     * @return string 
+     */
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Widget
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Widget
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
     /**
      * @ORM\PrePersist
      */
@@ -74,5 +212,4 @@ class Widget
     {
         $this->updatedAt = new \DateTime;
     }
-
 }
